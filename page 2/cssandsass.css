@@ -1,0 +1,89 @@
+@charset "UTF-8";
+body {
+  margin: 0px;
+}
+
+/*Containeri tekee koko sivun layoutin gridiä hyödyntäen*/
+#container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 3fr 3fr 3fr;
+  height: 100vh;
+}
+
+/*Käytin tuntiesimerkkiä, jossa mixinillä ja highlight muuttujalla tehdään tekstin osista erivärisiä. Span:t, joilla on highlight class vaihtavat väriä if lauseen perusteella.*/
+.vaalea {
+  color: gray;
+}
+.vaalea .highlight {
+  color: purple;
+}
+
+.vihrea {
+  color: darkorange;
+}
+.vihrea .highlight {
+  color: cyan;
+}
+
+.lime {
+  color: brown;
+}
+.lime .highlight {
+  color: black;
+}
+
+/*seuravat 4 ovat tehtävän annossa vaadittavat selektorit: nav~article,footer,aside antaa kaikille osioille mustan borderin, div+p piilottaa turhat p osat kun en muuta keksinyt, a[href] suurentaa kaikilla sivuilla nav barin fonttia ja div>span.highlight:hover tekee fontin suurennoksen hoverilla*/
+nav ~ article, footer, aside {
+  border: 2px solid black;
+}
+
+div + p {
+  display: none;
+}
+
+a[href] {
+  font-size: 2em;
+}
+
+div > span.highlight:hover {
+  font-size: 2.5em;
+}
+
+nav {
+  grid-row: 1/2;
+}
+
+article {
+  background-color: #faebd7;
+}
+
+aside {
+  background-color: #C7EAAB;
+}
+
+footer {
+  background-color: #D2FD8D;
+}
+
+article, aside, footer {
+  font-size: 2em;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*Media screenillä tein responsiivisuuden ja näkymä muuttuu kaikilla sivuilla 600px kohdalla. En ole varma että kuinka suuri pikseli määrä on hyvä, mutta ainakin se toimii*/
+@media screen and (min-width: 600px) {
+  #container {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 6fr;
+  }
+  nav {
+    grid-column: 1/4;
+    grid-row: 1/2;
+  }
+}
+
+/*# sourceMappingURL=cssandsass.css.map */
